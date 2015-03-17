@@ -19,7 +19,7 @@ if(getRversion() >= "2.15.1") {
 #' 
 #' @export
 #' @importFrom shiny runApp
-view <- function(name = NULL, group = NULL, state = NULL, openBrowser = TRUE, conn = getOption("vdbConn"), port = 8100L) {
+view <- function(name = NULL, group = NULL, state = NULL, openBrowser = TRUE, conn = getOption("vdbConn"), port = 8100L, host=getOption("shiny.host", "127.0.0.1")) {
    
    port <- as.integer(port)
    
@@ -69,6 +69,6 @@ view <- function(name = NULL, group = NULL, state = NULL, openBrowser = TRUE, co
       options("trsCurrentViewState" = NULL)
    }
    
-   runApp(shinyAppPrefix, port = port, launch.browser = openBrowser)
+   runApp(shinyAppPrefix, port = port, launch.browser = openBrowser, host=host)
 }
 
